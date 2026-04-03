@@ -145,29 +145,29 @@ async def update_profile(
 def get_current_user_id(authorization: str) -> str:
     """Helper to extract user ID from auth token."""
     try:
-        supabase = get_supabase_client()
+        admin = get_supabase_admin()
         token = authorization.replace("Bearer ", "")
-        user_response = supabase.auth.get_user(token)
+        user_response = admin.auth.get_user(token)
         return str(user_response.user.id)
-    except Exception:
-        raise HTTPException(status_code=401, detail="Invalid or expired token")
+    except Exception as e:
+        raise HTTPException(status_code=401, detail=f"Invalid or expired token: {str(e)}")
 
 
 def get_current_user_role(authorization: str) -> str:
     """Helper to extract user role from auth token."""
     try:
-        supabase = get_supabase_client()
+        admin = get_supabase_admin()
         token = authorization.replace("Bearer ", "")
-        user_response = supabase.auth.get_user(token)
+        user_response = admin.auth.get_user(token)
         user_id = str(user_response.user.id)
 
         profile = (
-            supabase.table("profiles")
+            admin.table("profiles")
             .select("role")
             .eq("id", user_id)
             .single()
             .execute()
         )
         return profile.data.get("role", "caregiver")
-    except Exception:
-        raise HTTPException(status_code=401, detail="Invalid or expired token")
+    except Exception as e:
+        raise HTTPException(status_code=401, detail=f"Invalid or expired token: {str(e)}")
