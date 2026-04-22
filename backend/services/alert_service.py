@@ -93,6 +93,13 @@ def _build_alert_content(
             f"Patient {patient_name} is due for pressure ulcer risk "
             f"reassessment. Last score: {risk_score} ({risk_level.capitalize()} Risk)."
         )
+    elif alert_type == "position_change":
+        title = f"🔁 Position Change Due: {patient_name}"
+        message = (
+            f"Patient {patient_name} is due for repositioning. "
+            f"Current risk level: {risk_level.upper()} (Braden Score: {risk_score}). "
+            f"Reposition patient and document the change."
+        )
     elif alert_type == "new_patient":
         title = f"🆕 New Patient: {patient_name}"
         message = (

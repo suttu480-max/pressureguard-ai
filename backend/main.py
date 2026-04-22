@@ -3,10 +3,29 @@ PressureGuard AI — Backend API
 FastAPI application for pressure ulcer risk prediction and smart alert system.
 """
 
+import asyncio
+from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from config import FRONTEND_URL, APP_PORT, APP_ENV
 from routers import auth, patients, alerts, dashboard
+from services.alert_scheduler import alert_scheduler_loop
+
+# ── App Lifespan (startup/shutdown) ───────────────────
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    """Start background tasks on startup, clean up on shutdown."""
+    # Start the alert scheduler as a background task
+    scheduler_task = asyncio.create_task(alert_scheduler_loop())
+    print("[App] Alert scheduler started")
+    yield
+    # Cancel the scheduler on shutdown
+    scheduler_task.cancel()
+    try:
+        await scheduler_task
+    except asyncio.CancelledError:
+        print("[App] Alert scheduler stopped")
 
 # ── App Initialization ────────────────────────────────
 
@@ -15,7 +34,8 @@ app = FastAPI(
     description="AI-Based Dynamic Pressure Ulcer Risk Prediction & Smart Alert System",
     version="1.0.0",
     docs_url="/docs",
-    redoc_url="/redoc"
+    redoc_url="/redoc",
+    lifespan=lifespan
 )
 
 # ── CORS Middleware ───────────────────────────────────
@@ -70,3 +90,4 @@ if __name__ == "__main__":
         port=APP_PORT,
         reload=True if APP_ENV == "development" else False
     )
+
