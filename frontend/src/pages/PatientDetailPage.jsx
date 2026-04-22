@@ -14,8 +14,8 @@ import {
 import toast from 'react-hot-toast';
 
 const RISK_COLORS = {
-  critical: '#ef4444', high: '#f97316',
-  moderate: '#f59e0b', low: '#10b981'
+  critical: '#c0392b', high: '#d4731a',
+  moderate: '#c9944a', low: '#3a8a6e'
 };
 
 const SCORE_INFO = {
@@ -278,15 +278,15 @@ export default function PatientDetailPage() {
             {historyChart.length > 1 ? (
               <ResponsiveContainer width="100%" height="100%">
                 <LineChart data={historyChart}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#21262d" />
-                  <XAxis dataKey="date" stroke="#484f58" fontSize={11} />
-                  <YAxis domain={[6, 23]} stroke="#484f58" fontSize={11} />
+                  <CartesianGrid strokeDasharray="3 3" stroke="#ddd0c1" />
+                  <XAxis dataKey="date" stroke="#8da5a8" fontSize={11} />
+                  <YAxis domain={[6, 23]} stroke="#8da5a8" fontSize={11} />
                   <Tooltip contentStyle={{
-                    background: '#161b22', border: '1px solid #21262d',
-                    borderRadius: 8, fontSize: 12
+                    background: '#ffffff', border: '1px solid #ddd0c1',
+                    borderRadius: 8, fontSize: 12, color: '#1e3a3d'
                   }} />
-                  <Line type="monotone" dataKey="score" stroke="#3b82f6"
-                    strokeWidth={2} dot={{ fill: '#3b82f6', r: 4 }} />
+                  <Line type="monotone" dataKey="score" stroke="#2c5e63"
+                    strokeWidth={2} dot={{ fill: '#2c5e63', r: 4 }} />
                 </LineChart>
               </ResponsiveContainer>
             ) : (
@@ -308,7 +308,7 @@ export default function PatientDetailPage() {
           <div>
             {subscales.map(s => {
               const pct = (s.value / s.max) * 100;
-              const barColor = pct <= 25 ? '#ef4444' : pct <= 50 ? '#f97316' : pct <= 75 ? '#f59e0b' : '#10b981';
+              const barColor = pct <= 25 ? '#c0392b' : pct <= 50 ? '#d4731a' : pct <= 75 ? '#c9944a' : '#3a8a6e';
               return (
                 <div key={s.label} style={{ marginBottom: 16 }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 6 }}>

@@ -30,10 +30,10 @@ const SCORE_INFO = {
 };
 
 const RISK_STYLES = {
-  critical: { color: '#ef4444', bg: 'rgba(239,68,68,0.12)', border: 'rgba(239,68,68,0.25)', label: 'CRITICAL RISK' },
-  high: { color: '#f97316', bg: 'rgba(249,115,22,0.12)', border: 'rgba(249,115,22,0.25)', label: 'HIGH RISK' },
-  moderate: { color: '#f59e0b', bg: 'rgba(245,158,11,0.12)', border: 'rgba(245,158,11,0.25)', label: 'MODERATE RISK' },
-  low: { color: '#10b981', bg: 'rgba(16,185,129,0.12)', border: 'rgba(16,185,129,0.25)', label: 'LOW RISK' }
+  critical: { color: '#c0392b', bg: 'rgba(192,57,43,0.10)', border: 'rgba(192,57,43,0.25)', label: 'CRITICAL RISK' },
+  high: { color: '#d4731a', bg: 'rgba(212,115,26,0.10)', border: 'rgba(212,115,26,0.25)', label: 'HIGH RISK' },
+  moderate: { color: '#c9944a', bg: 'rgba(201,148,74,0.10)', border: 'rgba(201,148,74,0.25)', label: 'MODERATE RISK' },
+  low: { color: '#3a8a6e', bg: 'rgba(58,138,110,0.10)', border: 'rgba(58,138,110,0.25)', label: 'LOW RISK' }
 };
 
 export default function RiskAssessmentPage() {

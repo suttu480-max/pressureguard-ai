@@ -12,8 +12,8 @@ import {
 } from 'recharts';
 
 const RISK_COLORS = {
-  critical: '#ef4444', high: '#f97316',
-  moderate: '#f59e0b', low: '#10b981'
+  critical: '#c0392b', high: '#d4731a',
+  moderate: '#c9944a', low: '#3a8a6e'
 };
 
 export default function DashboardPage() {
@@ -158,33 +158,33 @@ export default function DashboardPage() {
                 <AreaChart data={trends}>
                   <defs>
                     <linearGradient id="critGrad" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="5%" stopColor="#ef4444" stopOpacity={0.3} />
-                      <stop offset="95%" stopColor="#ef4444" stopOpacity={0} />
+                      <stop offset="5%" stopColor="#c0392b" stopOpacity={0.3} />
+                      <stop offset="95%" stopColor="#c0392b" stopOpacity={0} />
                     </linearGradient>
                     <linearGradient id="highGrad" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="5%" stopColor="#f97316" stopOpacity={0.3} />
-                      <stop offset="95%" stopColor="#f97316" stopOpacity={0} />
+                      <stop offset="5%" stopColor="#d4731a" stopOpacity={0.3} />
+                      <stop offset="95%" stopColor="#d4731a" stopOpacity={0} />
                     </linearGradient>
                     <linearGradient id="lowGrad" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="5%" stopColor="#10b981" stopOpacity={0.3} />
-                      <stop offset="95%" stopColor="#10b981" stopOpacity={0} />
+                      <stop offset="5%" stopColor="#3a8a6e" stopOpacity={0.3} />
+                      <stop offset="95%" stopColor="#3a8a6e" stopOpacity={0} />
                     </linearGradient>
                   </defs>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#21262d" />
-                  <XAxis dataKey="date" stroke="#484f58" fontSize={11}
+                  <CartesianGrid strokeDasharray="3 3" stroke="#ddd0c1" />
+                  <XAxis dataKey="date" stroke="#8da5a8" fontSize={11}
                     tickFormatter={v => v.slice(5)} />
-                  <YAxis stroke="#484f58" fontSize={11} />
+                  <YAxis stroke="#8da5a8" fontSize={11} />
                   <Tooltip
                     contentStyle={{
-                      background: '#161b22', border: '1px solid #21262d',
-                      borderRadius: 8, fontSize: 12
+                      background: '#ffffff', border: '1px solid #ddd0c1',
+                      borderRadius: 8, fontSize: 12, color: '#1e3a3d'
                     }}
                   />
-                  <Area type="monotone" dataKey="critical" stroke="#ef4444"
+                  <Area type="monotone" dataKey="critical" stroke="#c0392b"
                     fill="url(#critGrad)" strokeWidth={2} />
-                  <Area type="monotone" dataKey="high" stroke="#f97316"
+                  <Area type="monotone" dataKey="high" stroke="#d4731a"
                     fill="url(#highGrad)" strokeWidth={2} />
-                  <Area type="monotone" dataKey="low" stroke="#10b981"
+                  <Area type="monotone" dataKey="low" stroke="#3a8a6e"
                     fill="url(#lowGrad)" strokeWidth={2} />
                 </AreaChart>
               </ResponsiveContainer>
@@ -220,8 +220,8 @@ export default function DashboardPage() {
                   </Pie>
                   <Tooltip
                     contentStyle={{
-                      background: '#161b22', border: '1px solid #21262d',
-                      borderRadius: 8, fontSize: 12
+                      background: '#ffffff', border: '1px solid #ddd0c1',
+                      borderRadius: 8, fontSize: 12, color: '#1e3a3d'
                     }}
                   />
                 </PieChart>
@@ -271,9 +271,9 @@ export default function DashboardPage() {
                   <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
                     <div className="patient-avatar" style={{
                       width: 36, height: 36, borderRadius: '50%',
-                      background: 'linear-gradient(135deg, var(--accent-blue), var(--accent-purple))',
+                      background: 'linear-gradient(135deg, #6aa6aa, #2c5e63)',
                       display: 'flex', alignItems: 'center', justifyContent: 'center',
-                      fontWeight: 600, fontSize: 13, color: 'white'
+                      fontWeight: 600, fontSize: 13, color: '#fdfdf9'
                     }}>
                       {p.name?.[0]?.toUpperCase()}
                     </div>

@@ -8,10 +8,10 @@ import {
 import toast from 'react-hot-toast';
 
 const SEVERITY_CONFIG = {
-  critical: { icon: AlertOctagon, color: '#ef4444', bg: 'rgba(239,68,68,0.12)' },
-  high: { icon: AlertTriangle, color: '#f97316', bg: 'rgba(249,115,22,0.12)' },
-  medium: { icon: Bell, color: '#f59e0b', bg: 'rgba(245,158,11,0.12)' },
-  low: { icon: Info, color: '#10b981', bg: 'rgba(16,185,129,0.12)' },
+  critical: { icon: AlertOctagon, color: '#c0392b', bg: 'rgba(192,57,43,0.10)' },
+  high: { icon: AlertTriangle, color: '#d4731a', bg: 'rgba(212,115,26,0.10)' },
+  medium: { icon: Bell, color: '#c9944a', bg: 'rgba(201,148,74,0.10)' },
+  low: { icon: Info, color: '#3a8a6e', bg: 'rgba(58,138,110,0.10)' },
 };
 
 export default function AlertsPage() {
@@ -125,7 +125,7 @@ export default function AlertsPage() {
                     {alert.is_acknowledged && (
                       <span style={{
                         fontSize: 11, padding: '2px 8px', borderRadius: 10,
-                        background: 'rgba(16,185,129,0.12)', color: '#10b981',
+                        background: 'rgba(58,138,110,0.12)', color: '#3a8a6e',
                         fontWeight: 600
                       }}>
                         ✓ Acknowledged

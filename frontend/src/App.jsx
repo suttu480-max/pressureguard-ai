@@ -95,14 +95,15 @@ export default function App() {
           toastOptions={{
             duration: 4000,
             style: {
-              background: '#161b22',
-              color: '#f0f6fc',
-              border: '1px solid #21262d',
+              background: '#ffffff',
+              color: '#1e3a3d',
+              border: '1px solid #ddd0c1',
               borderRadius: '10px',
               fontSize: '14px',
+              boxShadow: '0 4px 16px rgba(44, 94, 99, 0.1)',
             },
-            success: { iconTheme: { primary: '#10b981', secondary: '#fff' } },
-            error: { iconTheme: { primary: '#ef4444', secondary: '#fff' } },
+            success: { iconTheme: { primary: '#3a8a6e', secondary: '#fff' } },
+            error: { iconTheme: { primary: '#c0392b', secondary: '#fff' } },
           }}
         />
       </AuthProvider>

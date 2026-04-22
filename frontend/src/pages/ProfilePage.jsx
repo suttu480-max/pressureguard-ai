@@ -14,9 +14,9 @@ export default function ProfilePage() {
   };
 
   const roleColors = {
-    doctor: { bg: 'rgba(59,130,246,0.12)', color: '#3b82f6', border: 'rgba(59,130,246,0.25)' },
-    nurse: { bg: 'rgba(16,185,129,0.12)', color: '#10b981', border: 'rgba(16,185,129,0.25)' },
-    caregiver: { bg: 'rgba(139,92,246,0.12)', color: '#8b5cf6', border: 'rgba(139,92,246,0.25)' },
+    doctor: { bg: 'rgba(44,94,99,0.12)', color: '#2c5e63', border: 'rgba(44,94,99,0.25)' },
+    nurse: { bg: 'rgba(58,138,110,0.12)', color: '#3a8a6e', border: 'rgba(58,138,110,0.25)' },
+    caregiver: { bg: 'rgba(106,166,170,0.12)', color: '#6aa6aa', border: 'rgba(106,166,170,0.25)' },
   };
 
   const rc = roleColors[profile?.role] || roleColors.caregiver;
@@ -37,10 +37,10 @@ export default function ProfilePage() {
       <div className="card" style={{ textAlign: 'center', marginBottom: 24 }}>
         <div style={{
           width: 88, height: 88, borderRadius: '50%',
-          background: 'linear-gradient(135deg, var(--accent-blue), var(--accent-purple))',
+          background: 'linear-gradient(135deg, #6aa6aa, #2c5e63)',
           display: 'flex', alignItems: 'center', justifyContent: 'center',
-          fontSize: 32, fontWeight: 700, color: 'white',
-          margin: '0 auto 16px', boxShadow: '0 4px 20px rgba(59,130,246,0.3)'
+          fontSize: 32, fontWeight: 700, color: '#fdfdf9',
+          margin: '0 auto 16px', boxShadow: '0 4px 20px rgba(44,94,99,0.2)'
         }}>
           {initials}
         </div>
@@ -90,7 +90,7 @@ export default function ProfilePage() {
           <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
             <div style={{
               width: 40, height: 40, borderRadius: 'var(--radius-sm)',
-              background: 'rgba(16,185,129,0.12)', color: '#10b981',
+              background: 'rgba(58,138,110,0.12)', color: '#3a8a6e',
               display: 'flex', alignItems: 'center', justifyContent: 'center'
             }}>
               <Mail size={18} />
@@ -104,7 +104,7 @@ export default function ProfilePage() {
           <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
             <div style={{
               width: 40, height: 40, borderRadius: 'var(--radius-sm)',
-              background: 'rgba(139,92,246,0.12)', color: '#8b5cf6',
+              background: 'rgba(106,166,170,0.12)', color: '#6aa6aa',
               display: 'flex', alignItems: 'center', justifyContent: 'center'
             }}>
               <Shield size={18} />
@@ -136,8 +136,8 @@ export default function ProfilePage() {
               <span style={{
                 fontSize: 12, fontWeight: 600,
                 padding: '3px 10px', borderRadius: 12,
-                background: perm.allowed ? 'rgba(16,185,129,0.12)' : 'rgba(239,68,68,0.12)',
-                color: perm.allowed ? '#10b981' : '#ef4444'
+                background: perm.allowed ? 'rgba(58,138,110,0.12)' : 'rgba(192,57,43,0.12)',
+                color: perm.allowed ? '#3a8a6e' : '#c0392b'
               }}>
                 {perm.allowed ? '✓ Allowed' : '✗ Restricted'}
               </span>
