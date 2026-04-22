@@ -136,6 +136,23 @@ async def acknowledge_alert(alert_id: str, authorization: str = Header(...)):
         raise HTTPException(status_code=500, detail=f"Failed to acknowledge: {str(e)}")
 
 
+@router.post("/check-scheduled")
+async def check_scheduled_alerts(authorization: str = Header(...)):
+    """
+    Manually trigger the alert scheduler to check for time-based alerts.
+    Called by the frontend on page load to work around server sleeping.
+    """
+    try:
+        from services.alert_scheduler import check_and_generate_scheduled_alerts
+        alerts = check_and_generate_scheduled_alerts()
+        return {
+            "message": f"Generated {len(alerts)} scheduled alert(s)",
+            "count": len(alerts)
+        }
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Scheduler check failed: {str(e)}")
+
+
 @router.delete("/{alert_id}")
 async def delete_alert(alert_id: str, authorization: str = Header(...)):
     """Delete an alert (doctor only)."""

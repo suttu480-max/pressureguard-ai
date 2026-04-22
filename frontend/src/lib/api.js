@@ -132,6 +132,12 @@ class ApiService {
       method: 'PUT'
     });
   }
+
+  async checkScheduledAlerts() {
+    return this.request('/api/alerts/check-scheduled', {
+      method: 'POST'
+    });
+  }
 }
 
 export const api = new ApiService();

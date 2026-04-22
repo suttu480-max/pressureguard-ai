@@ -21,11 +21,21 @@ export default function AlertsPage() {
   const { canEdit } = useAuth();
 
   useEffect(() => {
-    loadAlerts();
+    triggerSchedulerAndLoad();
   }, [filter]);
 
-  const loadAlerts = async () => {
+  const triggerSchedulerAndLoad = async () => {
     setLoading(true);
+    try {
+      // Trigger the backend scheduler to generate any overdue time-based alerts
+      await api.checkScheduledAlerts().catch(() => {});
+    } catch {
+      // Silently ignore scheduler errors
+    }
+    await loadAlerts();
+  };
+
+  const loadAlerts = async () => {
     try {
       const params = {};
       if (filter === 'unacknowledged') params.is_acknowledged = false;
